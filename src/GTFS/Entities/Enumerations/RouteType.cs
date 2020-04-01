@@ -67,6 +67,10 @@ namespace GTFS.Entities.Enumerations
         /// Monorail. Railway in which the track consists of a single rail or a beam.
         /// </summary>
         Monorail = 12,
+        /// <summary>
+        /// Invalid/Unknown route type.
+        /// </summary>
+        None = -1
     }
 
     /// <summary>

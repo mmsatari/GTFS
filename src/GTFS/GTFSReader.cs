@@ -1612,7 +1612,7 @@ namespace GTFS
         /// Parses a route-type field.
         /// </summary>
         /// <returns></returns>
-        protected virtual RouteTypeExtended ParseFieldRouteType(string name, string fieldName, string value)
+        protected virtual RouteType ParseFieldRouteType(string name, string fieldName, string value)
         {
             // clean first.
             value = this.CleanFieldValue(value);
@@ -1631,39 +1631,27 @@ namespace GTFS
             switch (value)
             {
                 case "0":
-                    return RouteType.Tram.ToExtended();
+                    return RouteType.Tram;
                 case "1":
-                    return RouteType.SubwayMetro.ToExtended();
+                    return RouteType.SubwayMetro;
                 case "2":
-                    return RouteType.Rail.ToExtended();
+                    return RouteType.Rail;
                 case "3":
-                    return RouteType.Bus.ToExtended();
+                    return RouteType.Bus;
                 case "4":
-                    return RouteType.Ferry.ToExtended();
+                    return RouteType.Ferry;
                 case "5":
-                    return RouteType.CableCar.ToExtended();
+                    return RouteType.CableCar;
                 case "6":
-                    return RouteType.Gondola.ToExtended();
+                    return RouteType.Gondola;
                 case "7":
-                    return RouteType.Funicular.ToExtended();
+                    return RouteType.Funicular;
                 case "11":
-                    return RouteType.Trolleybus.ToExtended();
+                    return RouteType.Trolleybus;
                 case "12":
-                    return RouteType.Gondola.ToExtended();
-            }
-
-            if (!int.TryParse(value, out var routeTypeValue))
-            {
-                throw new GTFSParseException(name, fieldName, value);
-            }
-
-            try
-            {
-                return (RouteTypeExtended) routeTypeValue;
-            }
-            catch
-            {
-                throw new GTFSParseException(name, fieldName, value);
+                    return RouteType.Monorail;
+                default:
+                    return RouteType.None;
             }
         }
 
